@@ -8,6 +8,13 @@ This provides a very simple JavaScript to XML module for [node.js][node], based 
 
 The intent is only to provide a very basic serialization at this time, some options are available
 
+Install
+-------
+
+The usual, [npm][npm], add a dependency in your package.json to 
+<code>js2xml</code> and run:
+
+    $ npm install
 API
 ---
 
