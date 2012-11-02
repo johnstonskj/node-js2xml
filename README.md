@@ -1,5 +1,5 @@
-node-js2xml
-===========
+node-js2xml (simplejs2xml)
+==========================
 
 This provides a very simple JavaScript to XML module for [node.js][node], based on the [Genx][genx] package.
 
@@ -13,7 +13,7 @@ Install
 -------
 
 The usual, [npm][npm], add a dependency in your package.json to 
-<code>js2xml</code> and run:
+<code>simplejs2xml</code> and run:
 
     $ npm install
 
@@ -24,7 +24,7 @@ The module only supports a single method, <code>toXml(object, [options]</code> t
 will perform a simple serialization of the passed in JavaScript object.
 
 ```javascript
-var xml = require('js2xml');
+var xml = require('simplejs2xml');
 
 var serialized = xml.toXml({name: 'example', version: 3}, {});
 ```
