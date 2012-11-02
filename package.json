@@ -1,5 +1,5 @@
 {
-    "name": "js2xml",
+    "name": "simplejs2xml",
     "version": "0.1.0",
     "description": "Simple JavaScript to XML serializer",
     "author": "Simon Johnston <johnstonskj@gmail.com>",
