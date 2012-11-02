@@ -15,6 +15,7 @@
         "url": "https://github.com/johnstonskj/node-js2xml/blob/master/LICENSE"
     },
     "dependencies": {
+        "validate-type": ">= 0.1.0",
         "dateformat": ">= 1.0.0",
         "genx": ">= 0.9.0",
         "mocha": ">= 1.0.0"
