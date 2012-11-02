@@ -20,7 +20,7 @@ The usual, [npm][npm], add a dependency in your package.json to
 API
 ---
 
-The module only supports a single method, <code>toXml(object, [options]</code> that
+The module only supports a single method, <code>toXml(object, [options])</code> that
 will perform a simple serialization of the passed in JavaScript object.
 
 ```javascript
