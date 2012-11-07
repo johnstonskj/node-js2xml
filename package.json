@@ -19,6 +19,7 @@
         "dateformat": ">= 1.0.0"
     },
     "devDependencies": {
+        "should": "1.2.1",
         "mocha": ">= 1.0.0"
     },
     "directories": {

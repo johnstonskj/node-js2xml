@@ -1,4 +1,4 @@
-var Assert = require('assert');
+var should = require('should');
 var XmlWriter = require('../lib/writer').XmlWriter;
 
 describe('XmlWriter', function() {
@@ -11,8 +11,7 @@ describe('XmlWriter', function() {
             var element = writer.startElement('Test');
             element.endElement();
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="1.0" encoding="UTF-8" ?><Test/>',
                 'Badly generated XML');
             done();
@@ -24,8 +23,7 @@ describe('XmlWriter', function() {
             var element = writer.startElement('Test');
             element.endElement();
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="2.0" encoding="UTF-8" ?><Test/>',
                 'Badly generated XML');
             done();
@@ -37,8 +35,7 @@ describe('XmlWriter', function() {
             var element = writer.startElement('Test');
             element.endElement();
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="1.0" encoding="UTF-16" ?><Test/>',
                 'Badly generated XML');
             done();
@@ -50,22 +47,18 @@ describe('XmlWriter', function() {
 
         it('No root element, or startDocument', function(done) {
             var writer = new XmlWriter();
-            Assert.throws(function() {
-                    writer.endDocument();
-                },
-                Error,
-                'Should have thrown an Error');
+            (function() {
+                writer.endDocument();
+            }).should.throw();
             done();
         });
 
         it('No root element', function(done) {
             var writer = new XmlWriter();
             writer.startDocument();
-            Assert.throws(function() {
-                    writer.endDocument();
-                },
-                Error,
-                'Should have thrown an Error');
+            (function() {
+                writer.endDocument();
+            }).should.throw();
             done();
         });
 
@@ -73,11 +66,9 @@ describe('XmlWriter', function() {
             var writer = new XmlWriter();
             writer.startDocument();
             var element = writer.startElement('Test');
-            Assert.throws(function() {
-                    writer.endDocument();
-                },
-                Error,
-                'Should have thrown an Error');
+            (function() {
+                writer.endDocument();
+            }).should.throw();
             done();
         });
 
@@ -93,8 +84,7 @@ describe('XmlWriter', function() {
             var element = writer.startElement('Test');
             element.endElement();
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="1.0" encoding="UTF-16" ?><Test xmlns:people="http://example.org/people" xmlns:places="http://example.org/places"/>',
                 'Badly generated XML');
             done();
@@ -108,8 +98,7 @@ describe('XmlWriter', function() {
             writer.addNamespace('http://example.org/places', 'places');
             element.endElement();
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="1.0" encoding="UTF-16" ?><Test xmlns:people="http://example.org/people" xmlns:places="http://example.org/places"/>',
                 'Badly generated XML');
             done();
@@ -124,8 +113,7 @@ describe('XmlWriter', function() {
             element.addNamespace('http://example.org/things', 'things');
             element.endElement();
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="1.0" encoding="UTF-16" ?><Test xmlns:people="http://example.org/people" xmlns:places="http://example.org/places" xmlns:things="http://example.org/things"/>',
                 'Badly generated XML');
             done();
@@ -142,8 +130,7 @@ describe('XmlWriter', function() {
             element.addAttribute('id', '987245');
             element.endElement();
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="1.0" encoding="UTF-16" ?><Test id="987245"/>',
                 'Badly generated XML');
             done();
@@ -167,8 +154,7 @@ describe('XmlWriter', function() {
                 element.endElement();
             }
             writer.endDocument();
-            Assert.strictEqual(
-                writer.toString(),
+            writer.toString().should.equal(
                 '<?xml version="1.0" encoding="UTF-16" ?><Test id="0"><child id="0-0"/><child id="0-1"/></Test><Test id="1"><child id="1-0"/><child id="1-1"/></Test><Test id="2"><child id="2-0"/><child id="2-1"/></Test><Test id="3"><child id="3-0"/><child id="3-1"/></Test><Test id="4"><child id="4-0"/><child id="4-1"/></Test>',
                 'Badly generated XML');
             done();
