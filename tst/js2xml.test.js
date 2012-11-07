@@ -110,6 +110,32 @@ describe('js2xml', function() {
             done();
         });
 
+        it('Call with options.constructorNames not set', function(done) {
+            function MyObject() {
+                this.name = 'mine';
+                this.value = 42;
+            }
+            var object = new MyObject();
+            var output = xml.toXml(object, {constructorNames: undefined});
+            output.should.equal(
+                '<?xml version="1.0" encoding="UTF-8" ?><js:Object xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:js="http://www.example.org/js2xml" id="1"><name>mine</name><value xsi:type="xsd:integer">42</value></js:Object>',
+                'Badly generated XML');
+            done();
+        });
+
+        it('Call with options.constructorNames set', function(done) {
+            function MyObject() {
+                this.name = 'mine';
+                this.value = 42;
+            }
+            var object = new MyObject();
+            var output = xml.toXml(object, {constructorNames: true});
+            output.should.equal(
+                '<?xml version="1.0" encoding="UTF-8" ?><js:Object xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:js="http://www.example.org/js2xml" id="1" constructor="MyObject"><name>mine</name><value xsi:type="xsd:integer">42</value></js:Object>',
+                'Badly generated XML');
+            done();
+        });
+
     });
 
 });
