@@ -1,6 +1,6 @@
 {
     "name": "simplejs2xml",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Simple JavaScript to XML serializer",
     "author": "Simon Johnston <johnstonskj@gmail.com>",
     "keywords": [
