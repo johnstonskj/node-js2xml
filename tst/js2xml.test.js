@@ -75,7 +75,19 @@ describe('js2xml', function() {
                 array: [1, 2, 3, 4]
             });
             output.should.equal(
-                '<?xml version="1.0" encoding="UTF-8" ?><js:Object xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:js="http://www.example.org/js2xml" id="1"><object idref="1"/><array><_0 xsi:type="xsd:integer">1</_0><_1 xsi:type="xsd:integer">2</_1><_2 xsi:type="xsd:integer">3</_2><_3 xsi:type="xsd:integer">4</_3></array></js:Object>',
+                '<?xml version="1.0" encoding="UTF-8" ?><js:Object xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:js="http://www.example.org/js2xml" id="1"><object id="2"><str>string</str><num xsi:type="xsd:integer">42</num><bool xsi:type="xsd:boolean">true</bool></object><array><_0 xsi:type="xsd:integer">1</_0><_1 xsi:type="xsd:integer">2</_1><_2 xsi:type="xsd:integer">3</_2><_3 xsi:type="xsd:integer">4</_3></array></js:Object>',
+                'Badly generated XML');
+            done();
+        });
+
+        it('Call with object with nested objects', function(done) {
+            var output = xml.toXml({
+                    a: { A: true },
+                    b: { B: true },
+                    c: { C: true }
+            });
+            output.should.equal(
+                '<?xml version="1.0" encoding="UTF-8" ?><js:Object xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:js="http://www.example.org/js2xml" id="1"><a id="2"><A xsi:type="xsd:boolean">true</A></a><b id="3"><B xsi:type="xsd:boolean">true</B></b><c id="4"><C xsi:type="xsd:boolean">true</C></c></js:Object>',
                 'Badly generated XML');
             done();
         });
